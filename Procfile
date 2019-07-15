@@ -1,0 +1,1 @@
+web: gunicorn bashim.wsgi --log-file -

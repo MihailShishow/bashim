@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Нова цитата{% endblock %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {{ form.non_field_errors }}
+    <div class="form-group">
+        {{ form.email.errors }}
+        <label for="{{ form.email.id_for_label }}">Ваш e-mail</label>
+        <input type="email" name="email" required id="{{ form.email.id_for_label }}" class="form-control">
+    </div>
+    <div class="form-group">
+        {{ form.body.errors }}
+        <label for="{{ form.body.id_for_label }}">Текст цитати</label>
+         <textarea name="body" class="form-control" maxlength="2000" required id="{{ form.body.id_for_label }}"></textarea>
+    </div>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary btn-block">Відправити</button>
+</form>
+
+{% endblock %}

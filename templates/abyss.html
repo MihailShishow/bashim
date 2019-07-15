@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Безодня{% endblock %}
+
+{% block content %}
+<span pagetype="abyss"></span>
+    {% for quote in quotes %}
+    <span class="abyss_rating" id="r{{ quote.id }}">{{ quote.rating }}</span>
+	<div class="card">
+		<div class="card-header">
+			<table class="card-header-table">
+				<tr>
+					<td class="td-left">#AA{{ quote.id }}</td>
+					<td class="td-right">{{ quote.post_date|date:'j E Y р. о H:i' }}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="card-body">
+            <span class="text-monospace card-text">{{ quote.body|linebreaks }}</span>
+
+		</div>
+        <div id="{{ quote.id }}" class="alert" role="alert"></div>
+		<div class="card-footer">
+            <div class="row">
+                <div class="col-sm">
+                    <button type="button" class="btn btn-warning btn-block" onclick="accordion({{ quote.id }})">[:||:]</button>
+                </div>
+                <div class="col-sm">
+                    <button type="button" class="btn btn-success btn-block" onclick="rating({{ quote.id }}, '1')">+</button>
+                </div>
+                <div class="col-sm">
+                    <button type="button" class="btn btn-danger btn-block" onclick="rating({{ quote.id }}, '-1')">-</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <p class="lead">На жаль, зараз у Безодні немає свіжих цитат. Спробуйте завітати сюди пізніше.</p>
+  </div>
+</div>
+    {% endfor %}
+
+{% endblock %}

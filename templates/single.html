@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Цитата №{{ quote.id }}{% endblock %} {% block content %}
+<span pagetype="normal"></span>
+<div class="card">
+	<div class="card-header">
+		<table class="card-header-table">
+			<tr>
+				<td class="td-left">#{{ quote.id }}</td>
+				<td class="td-right">{{ quote.approved_date|date:'j E Y р. о H:i' }}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="card-body">
+		<span class="card-text text-monospace">
+{{ quote.body|linebreaks }}
+                </span>
+		</div>
+        <div id="{{ quote.id }}" class="alert" role="alert"></div>
+		<div class="card-footer">
+            <div class="row">
+                <div class="col-sm">
+                    <button type="button" class="btn btn-warning btn-block" onclick="accordion({{ quote.id }})">[:||:]</button>
+                </div>
+                <div class="col-sm">
+                    <button type="button" class="btn btn-success btn-block" onclick="rating({{ quote.id }}, '1')">+</button>
+                </div>
+                <div class="col-sm text-center my-auto">
+                   <span id="r{{ quote.id }}">{{ quote.rating }}</span>
+                </div>
+                <div class="col-sm">
+                    <button type="button" class="btn btn-danger btn-block" onclick="rating({{ quote.id }}, '-1')">-</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

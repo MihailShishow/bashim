@@ -1,0 +1,23 @@
+.card-header-table {
+    width: 100%;
+}
+
+.td-right {
+    text-align: right;
+}
+
+.td-left {
+    text-align: left;
+}
+
+.container-main {
+    padding: 10px;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.abyss_rating {
+    display: none;
+}
